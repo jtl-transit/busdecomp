@@ -10,4 +10,6 @@ the edge.
 
 Note that this program requires the Valhalla map matching engine to be
 configured for the appropriate region and running locally. Instructions
-for installing and configuring Valhalla are included in this repo. 
+for installing and configuring Valhalla are included in a [readme file](valhalla_readme.md). 
+
+
