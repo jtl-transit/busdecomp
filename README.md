@@ -103,3 +103,6 @@ For this analysis, publicly available GTFS feeds from October 2019 and October 2
 
 The notebook code and data for running this example can be found in the [examples](examples) folder. 
 The figures below show the stark differences in approaches to service delivery during COVID-19 across agencies by visualizing the number of scheduled weekday trips for each edge in October 2019 and October 2020.
+
+
+[ Figure ] 
