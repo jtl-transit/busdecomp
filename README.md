@@ -56,3 +56,6 @@ pip install -r requirements.txt
 ### 3. Install and configure Valhalla. 
 
 Valhalla is a separate program for running the map matching component of `busdecomp`. Instructions for installing and configuring Valhalla are included in a [readme file](valhalla_readme.md). 
+
+## Examples
+
