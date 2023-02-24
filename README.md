@@ -24,11 +24,11 @@ There are three main steps to setting up `busdecomp` for local use.
 2. Install the required software packages and Python libraries. 
 3. Install and configure Valhalla. 
 
-### 1. Clone the repository.
+#### 1. Clone the repository.
 
 Instructions on how to clone a repository from GitHub are available [here.](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
 
-### 2. Install the requirements
+#### 2. Install the requirements
 
 These instructions assume you have already installed Anaconda. An Anaconda distribution can be downloaded [here.]( https://www.anaconda.com/products/distribution)
 
@@ -53,7 +53,7 @@ cd @DIRECTORY
 pip install -r requirements.txt
 ```
 
-### 3. Install and configure Valhalla. 
+#### 3. Install and configure Valhalla. 
 
 Valhalla is a separate program for running the map matching component of `busdecomp`. Instructions for installing and configuring Valhalla are included in a [readme file](valhalla_readme.md). 
 
