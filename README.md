@@ -57,7 +57,7 @@ pip install -r requirements.txt
 
 Valhalla is a separate program for running the map matching component of `busdecomp`. Instructions for installing and configuring Valhalla are included in a [readme file](valhalla_readme.md). 
 
-## Usage
+## Using `busdecomp`
 
 To run a new `busdecomp` analysis, first collect the compliant GTFS feeds that will be used for the baseline and the comparison scenarios. 
 One possible source for GTFS feeds from transit agencies around the world is [The Mobility Database](https://database.mobilitydata.org/). 
