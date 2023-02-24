@@ -73,7 +73,7 @@ from main import busdecomp
 busdecomp(baseline_filename, comparison_filename, port=8002)
 ```
 
-Once the program has finished running, the output .geoJSON file will be saved to [/outputs](outputs). 
+Once the program has finished running, the output .geoJSON file will be saved to [/output](output). 
 
 ## Examples
 
