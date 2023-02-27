@@ -75,9 +75,9 @@ busdecomp(baseline_filename, comparison_filename, port=8002)
 
 Once the program has finished running, the output .geoJSON file will be saved to the [/output](output) folder with an output filename that is a concatenation of the two input filenames. 
 
-## Examples
+## Use Cases
 
-These examples demonstrate the utility of `busdecomp` for analyzing changes in bus transit service over long periods of time or between cities with nothing but a pair of GTFS feeds. 
+These use cases demonstrate the utility of `busdecomp` for analyzing changes in bus transit service over long periods of time or between cities with nothing but a pair of GTFS feeds. 
 Note that neither example includes analysis of a full bus network due to GitHub file size constraints. 
 Extended, full-scale versions of these examples and discussion of the results are available in the Supplemental Materials section of the paper. 
 
@@ -86,14 +86,14 @@ Extended, full-scale versions of these examples and discussion of the results ar
 This case study demonstrates how block-based representation, rather than identifier-based or aggregate geographic representation, enables a simple yet thorough comparison of transit service between two distant time periods. The type of comparison highlighted in this case study could be used by transit planners or advocacy groups to identify spatial disparities in transit service changes.
 
 Publicly available GTFS feeds from January 2011 and January 2021 are used to visualize service changes over the course of a decade, even under changing route and stop identifiers. 
-The notebook code and data for running this example can be found in the [examples](examples) folder. 
+The notebook code and data for running a reduced version of this example can be found in the [examples](examples) folder. 
 The output can easily be visualized as shown in the figure below by loading the output file into a GIS program (such as QGIS) and adding a basemap layer.
 
-[ Figure ] 
+![service_changes](https://user-images.githubusercontent.com/56656229/221449671-65b9317e-ef2f-4b48-b019-3d77fab0ab8e.PNG)
 
 This figure hows how service has evolved by highlighting segments that were served in 2011 but no longer served in 2021, regardless of route ID. This includes elimination of several routes in the northwestern part of the region, as well as consolidation of routes along fewer corridors near downtown Boston. The decomposition method identifies several service changes without any a priori knowledge on the part of the analyst, such as the elimination of bus service on Long Island in Boston Harbor after the Long Island Bridge was demolished in 2014. Other changes can also be observed, such as the discontinuation of Route 90 service to Wellington Station and the addition of Route 714.
 
-#### Example 2: Visual Comparison of COVID-19 Policies
+#### Case Study 2: Visual Comparison of COVID-19 Policies
 
 The second case study demonstrates how `busdecomp` enables a straightforward visual policy comparison, in this case the approach to transit service provision during the COVID-19 pandemic. 
 It also shows how to add schedule-based performance data to the analysis using additional `busdecomp` functions. 
@@ -101,8 +101,17 @@ The case study also emphasizes the generalizability of `busdecomp` to a range of
 
 For this analysis, publicly available GTFS feeds from October 2019 and October 2020 were collected for a group of eight geographically diverse and large transit agencies in the U.S.: the MBTA, the Chicago Transit Authority (CTA), Los Angeles Metro (LA Metro), King County Metro in Seattle, the Metropolitan Atlanta Rapid Transit Authority (MARTA), the Washington Metro Area Transit Authority (WMATA) in Washington DC, Miami-Dade Transit and Houston Metro. October 2020 was chosen as a representative month for pandemic service patterns as it was sufficiently removed from the onset of the pandemic to allow agencies to plan service adjustments, but well before vaccines became available and transit ridership began to rebound.
 
-The notebook code and data for running this example can be found in the [examples](examples) folder. 
+The notebook code and data for running a smaller version of this example for LA Metro can be found in the [examples](examples) folder. 
 The figures below show the stark differences in approaches to service delivery during COVID-19 across agencies by visualizing the number of scheduled weekday trips for each edge in October 2019 and October 2020.
 
+**CTA**: 
+![cta](https://user-images.githubusercontent.com/56656229/221449729-a2bfca83-2da6-4db4-b429-3cdbcd887e6c.PNG)
 
-[ Figure ] 
+**Houston**: 
+![houston](https://user-images.githubusercontent.com/56656229/221449740-e6287088-7648-467d-a767-cbf01f19b767.PNG)
+
+**King County Metro**:
+![kcmetro](https://user-images.githubusercontent.com/56656229/221449773-627cb8a2-117c-4dbb-a8ef-0b04a214aafc.PNG)
+
+**MARTA**:
+![marta](https://user-images.githubusercontent.com/56656229/221449828-b04bd6ec-a0c0-455a-8b11-a37ee378ea0d.PNG)
