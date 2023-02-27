@@ -112,6 +112,3 @@ The figures below show the stark differences in approaches to service delivery d
 
 **King County Metro**:
 ![kcmetro](https://user-images.githubusercontent.com/56656229/221449773-627cb8a2-117c-4dbb-a8ef-0b04a214aafc.PNG)
-
-**MARTA**:
-![marta](https://user-images.githubusercontent.com/56656229/221449828-b04bd6ec-a0c0-455a-8b11-a37ee378ea0d.PNG)
