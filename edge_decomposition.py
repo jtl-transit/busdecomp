@@ -39,7 +39,7 @@ from shapely.geometry import LineString, Point
 from pyproj import Geod
 import geopandas as gpd
 
-def edge_decomposition(segments, road_inpath):
+def edge_decomposition(segments, road_inpath, outpath, port = 8002):
     
     turn_penalty_factor = 100 # Penalizes turns in Valhalla routes. Range 0 - 100,000.
     maneuver_penalty = 60 # Penalty when a route includes a change from one road to another (seconds). Range 0 - 43,200. 
@@ -65,8 +65,6 @@ def edge_decomposition(segments, road_inpath):
                           'trace_options':{"turn_penalty_factor": turn_penalty_factor,
                                            'search_radius': None},
                           }
-    
-    
     
     class Edge: # Attributes for edge traversed by the routes in the network
         def __init__(self, way_id):
@@ -156,15 +154,6 @@ def edge_decomposition(segments, road_inpath):
     with open(segments) as f:
       segment_dict = json.load(f)
     
-    # """ TO BE DELETED """
-    # # DO NOT USE: FOR DEBUGGING ONLY
-    # temp_list = []
-    # for seg in segment_dict:
-    #     if seg['route_id'] == '47':
-    #         temp_list.append(seg)
-    # segment_dict = temp_list
-    # """ END TBD """ 
-    
     # Use Valhalla to find the set of edges that comprise each stop-to-stop segment
     edge_dict = {}
     mm_dict = {}
@@ -197,7 +186,7 @@ def edge_decomposition(segments, road_inpath):
                     request_data = request_parameters.copy()
                     request_data['encoded_polyline'] = seg_polyline
                     request_data['trace_options']['search_radius'] = radius
-                    req = requests.post('http://localhost:8002/trace_attributes',
+                    req = requests.post('http://localhost:'+str(port)+'/trace_attributes',
                                         data = json.dumps(request_data),
                                         timeout = 30)
                     
@@ -342,8 +331,6 @@ def edge_decomposition(segments, road_inpath):
                     piece_dict[(edge, piece_count)] = Piece(edge, piece_geom)
                     piece_count += 1
                     if remainder == None:
-                        # piece_dict[(edge, piece_count)].segments.append(stops)
-                        # piece_dict[(edge, piece_count)].routes.append(route)
                         break
             else:
                 continue
@@ -450,6 +437,6 @@ def edge_decomposition(segments, road_inpath):
     
     # Export to file
     gdf = gdf.sort_values(by = ['edge'])
-    gdf.to_file("output/edge_shapes.geojson", driver='GeoJSON')         
+    gdf.to_file(outpath + ".geojson", driver='GeoJSON')         
     total_time = time.time() - origin_time
     print("Total elapsed time:", round(total_time,0))
