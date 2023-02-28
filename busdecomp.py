@@ -48,3 +48,9 @@ def busdecomp_edges(base_gtfs, comp_gtfs, base_shapes, comp_shapes, metrics = Fa
     
     # Compare the two segments (metrics optional) and save them to file.
     compare_edges(base_gtfs, comp_gtfs, base_shapes, comp_shapes, metrics = metrics)
+
+base_path = 'data/MBTA_JAN2011_reduced.zip'
+comp_path = 'data/MBTA_JAN2021_reduced.zip'
+road_path = 'data/boston_roads_reduced.shp'
+
+busdecomp_gtfs(base_path, comp_path, road_path, metrics = True)

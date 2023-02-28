@@ -378,15 +378,14 @@ def map_matching(inpath):
     try:
         feed_shapes = feed.shapes[['shape_id', 'shape_pt_lat', 'shape_pt_lon']]
         has_shapes = True
-    except:
+    except (KeyError, ValueError):
         has_shapes = False
     
     # Check if timepoints included in GTFS feed
-    
     try:
         feed_stop_events = feed.stop_times[['trip_id', 'stop_id', 'stop_sequence', 'checkpoint_id']]
         has_timepoints = True
-    except:
+    except (KeyError, ValueError):
         feed_stop_events = feed.stop_times[['trip_id', 'stop_id', 'stop_sequence']]
         has_timepoints = False
     

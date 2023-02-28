@@ -15,7 +15,6 @@ from shapely.geometry import MultiLineString
 import partridge as ptg
 import pandas as pd
 import geopandas as gpd
-import datetime
 import time
 
 def compare_edges(base_gtfs_path, comp_gtfs_path, base_shapes_path, comp_shapes_path, metrics = False):
@@ -41,16 +40,9 @@ def compare_edges(base_gtfs_path, comp_gtfs_path, base_shapes_path, comp_shapes_
     # Function to find average daily trips for each segment using GTFS
     def average_daily_trips(inpath, base_indicator):
         
-        if base_indicator == True:
-            date = datetime.date(2022, 3, 16)
-            service_ids = ptg.read_service_ids_by_date(inpath)[date]
-        else:
-            date = datetime.date(2022, 2, 16)
-            service_ids = ptg.read_service_ids_by_date(inpath)[date]
-        
         # Import GTFS feed and filter down to normal bus routes only
         route_type = ['3']
-        view = {'routes.txt': {'route_type': route_type}, 'trips.txt': {'service_id': service_ids}}
+        view = {'routes.txt': {'route_type': route_type}}
         feed = ptg.load_feed(inpath, view)
         feed_stop_events = feed.stop_times[['trip_id', 'stop_id', 'stop_sequence']]
         
