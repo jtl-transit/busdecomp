@@ -15,7 +15,7 @@ Note that this program requires the Valhalla map matching engine to be
 configured for the appropriate region and running locally. Instructions
 for installing and configuring Valhalla are included in a [readme file](valhalla_readme.md). 
 
-This program was written for Python 3.9, and required packages are available in [requirements.txt](requirements.txt).
+This program was written for Python 3.7, and required packages are available in [requirements.txt](requirements.txt).
 
 ## Installation Instructions
 
@@ -35,14 +35,14 @@ These instructions assume you have already installed Anaconda. An Anaconda distr
 Open the Anaconda Prompt command line interface. Install a virtual environment using Anaconda and activate it (replace @ENV_NAME with the name of your virtual environment):
 
 ```
-conda create --name @ENV_NAME python=3.9
+conda create --name @ENV_NAME python=3.7
 conda activate @ENV_NAME
 ```
 
 For example:
 
 ```
-conda create --name busdecomp python=3.9
+conda create --name busdecomp python=3.7
 conda activate busdecomp
 ```
 
@@ -70,7 +70,7 @@ The keyword argument `port=8002` will allow the user to change the Valhalla port
 
 ``` 
 from main import busdecomp
-busdecomp(baseline_filename, comparison_filename, port=8002)
+busdecomp_gtfs(base_filename, comparison_filename, road_filename, port=8002)
 ```
 
 Once the program has finished running, the output .geoJSON file will be saved to the [/output](output) folder with an output filename that is a concatenation of the two input filenames. 
