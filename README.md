@@ -70,7 +70,7 @@ The keyword argument `port=8002` will allow the user to change the Valhalla port
 
 ``` 
 from main import busdecomp
-busdecomp(baseline_filename, comparison_filename, port=8002)
+busdecomp_gtfs(base_filename, comparison_filename, road_filename, port=8002)
 ```
 
 Once the program has finished running, the output .geoJSON file will be saved to the [/output](output) folder with an output filename that is a concatenation of the two input filenames. 
