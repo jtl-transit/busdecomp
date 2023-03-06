@@ -1,0 +1,5 @@
+# Ignore pycache documents
+*.pyc
+
+# Ignore jupyter checkpoints
+.ipynb_checkpoints
