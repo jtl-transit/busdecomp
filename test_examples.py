@@ -9,18 +9,18 @@ from shape_generation import map_matching, shape_matching
 from edge_decomposition import edge_decomposition
 from compare_edges import compare_edges
 
-gtfs_shapes = False
+gtfs_shapes = True
 compare = True
-metrics = False
+metrics = True
 port = 8002
 route_ids = [None, None]
 
-base_path = 'data/MBTA_GTFS_JAN2011.zip'
-comp_path = 'data/MBTA_GTFS_JAN2021.zip'
+base_path = 'data/MBTA_GTFS_OCT2019.zip'
+comp_path = 'data/MBTA_GTFS_OCT2020.zip'
 road_path = 'data/boston_roads_small.shp'
 
 # Filter to one specific route for this example to limit file sizes
-route_ids = [['01-1079'], ['1']]
+route_ids = [['1'], ['1']]
 
 # Generate the initial shapes defining the path of the bus routes.
 if gtfs_shapes:

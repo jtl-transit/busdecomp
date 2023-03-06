@@ -794,10 +794,12 @@ def map_matching(inpath, route_ids = None):
     return df
 
 
-def shape_matching(inpath):
+def shape_matching(inpath, route_ids = None):
     
     route_type = ['3']
     view = {'routes.txt': {'route_type': route_type}}
+    if route_ids != None:
+        view['routes.txt']['route_id'] = route_ids
     feed = ptg.load_geo_feed(inpath, view)
     
     # Check if timepoints included in GTFS feed

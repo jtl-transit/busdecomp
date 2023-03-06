@@ -65,7 +65,7 @@ def compare_edges(base_gtfs_path, comp_gtfs_path, base_shapes_path, comp_shapes_
             next_stop_id = stop_events[next_stop][2]
             route = stop_event[0]
             
-            segment = route + '-' + stop_id + '-' + next_stop_id
+            segment = str(route) + '-' + str(stop_id) + '-' + str(next_stop_id)
             
             if segment not in arrivals_dict:
                 arrivals_dict[segment] = 1
@@ -268,7 +268,7 @@ def compare_edges(base_gtfs_path, comp_gtfs_path, base_shapes_path, comp_shapes_
     
     basefilename = base_gtfs_path.split('/')[-1]
     compfilename = comp_gtfs_path.split('/')[-1]
-    outpath = 'output' + basefilename[:-4] + "_vs_" + compfilename[:-4] + ".geojson"
+    outpath = 'output/' + basefilename[:-4] + "_vs_" + compfilename[:-4] + ".geojson"
     gdf.to_file(outpath, driver='GeoJSON')         
     
     total_time = time.time() - origin_time
