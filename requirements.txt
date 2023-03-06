@@ -1,5 +1,5 @@
-partridge==1.1.1
-geopandas==0.12.2
-requests==2.28.2
-polyline==2.0.0
-tqdm==4.64.1
+numpy==1.19.1
+partridge[full]==1.1.1
+requests==2.27.1
+polyline==1.4.0
+tqdm==4.62.3
