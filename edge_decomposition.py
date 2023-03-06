@@ -150,23 +150,19 @@ def edge_decomposition(segments, road_inpath, outpath, port = 8002):
     
     origin_time = time.time()
     
-    # Load shapes file with stop-to-stop segment resolution
-    with open(segments) as f:
-      segment_dict = json.load(f)
-    
     # Use Valhalla to find the set of edges that comprise each stop-to-stop segment
     edge_dict = {}
     mm_dict = {}
     start_time = time.time()
     error_count = 0
-    for count, segment in enumerate(segment_dict):
+    for count, segment in segments.iterrows():
         
         stop_pair = tuple([segment['stop_pair'][0], segment['stop_pair'][1]])
         
         # If already processed this stop pair, continue
         if stop_pair in mm_dict: 
             elapsed_time = time.time() - start_time
-            if count % 100 == 0: print('Edges matched for', count, 'of', len(segment_dict), 'patterns', "Elapsed time:", round(elapsed_time,0))
+            if count % 100 == 0: print('Edges matched for', count, 'of', len(segments), 'patterns', "Elapsed time:", round(elapsed_time,0))
             continue
         
         else:
@@ -194,7 +190,7 @@ def edge_decomposition(segments, road_inpath, outpath, port = 8002):
                     result = req.json()
                     
                     # Error handling for unexpected Valhalla responses - add to search radius
-                    if len(result) == 4:
+                    if len(result) > 4:
                         print("Valhalla did not find shape for", str(stop_pair), ", Count = ", str(count))
                         radius += 5
                         if radius > 100: 
@@ -235,7 +231,7 @@ def edge_decomposition(segments, road_inpath, outpath, port = 8002):
                 edge_dict = update_edge(edge_dict, edge_id, new_coords, stop_pair, route)
     
         elapsed_time = time.time() - start_time
-        if count % 100 == 0: print('Edges matched for', count, 'of', len(segment_dict), 'patterns', "Elapsed time:", round(elapsed_time,0))
+        if count % 100 == 0: print('Edges matched for', count, 'of', len(segments), 'patterns', "Elapsed time:", round(elapsed_time,0))
     
     
     # Get dictionary of way shapes from OSM

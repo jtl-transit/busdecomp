@@ -335,12 +335,14 @@ def aggregate_shape_by_timepoint(df):    # Group by timepoint id for timepoint s
     return tp_df
 
 
-def map_matching(inpath):
+def map_matching(inpath, route_ids = None):
     
     route_type = ['3']
     view = {'routes.txt': {'route_type': route_type}}
+    if route_ids != None:
+        view['routes.txt']['route_id'] = route_ids
     feed = ptg.load_feed(inpath, view)
-    
+
     turn_penalty_factor = 100000 # Penalizes turns in Valhalla routes. Range 0 - 100,000.
     stop_radius = 35 # Radius used to search when matching stop coordinates (meters)
     intermediate_radius = 100 # Radius used to search when matching intermediate coordinates (meters)
@@ -787,11 +789,9 @@ def map_matching(inpath):
     df_mode = ['bus'] * len(df_route)
     df = pd.DataFrame(list(zip(df_route, df_pair, df_dir, df_pattern, df_dist, df_index, df_tp, df_mode, df_encodedline)), 
                       columns = ['route_id', 'stop_pair', 'direction', 'pattern', 'distance', 'seg_index', 'timepoint_index', 'mode', 'geometry'])
-    
-    tp_df = aggregate_shape_by_timepoint(df)
 
     # Return the dataframe and the correspondence dictionary
-    return df, tp_df
+    return df
 
 
 def shape_matching(inpath):

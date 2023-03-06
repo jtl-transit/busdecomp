@@ -265,7 +265,10 @@ def compare_edges(base_gtfs_path, comp_gtfs_path, base_shapes_path, comp_shapes_
     gdf = gdf.sort_values(by = ['edge'])
     gdf = gdf.set_crs('EPSG:2249')
     gdf = gdf.to_crs('EPSG:4326')
-    outpath = base_gtfs_path[:-4] + "_vs_" + comp_gtfs_path[:-4] + ".geojson"
+    
+    basefilename = base_gtfs_path.split('/')[-1]
+    compfilename = comp_gtfs_path.split('/')[-1]
+    outpath = 'output' + basefilename[:-4] + "_vs_" + compfilename[:-4] + ".geojson"
     gdf.to_file(outpath, driver='GeoJSON')         
     
     total_time = time.time() - origin_time
