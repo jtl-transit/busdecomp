@@ -268,7 +268,7 @@ def compare_edges(base_gtfs_path, comp_gtfs_path, base_shapes_path, comp_shapes_
     
     basefilename = base_gtfs_path.split('/')[-1]
     compfilename = comp_gtfs_path.split('/')[-1]
-    outpath = 'output/' + basefilename[:-4] + "_vs_" + compfilename[:-4] + ".geojson"
+    outpath = '../output/' + basefilename[:-4] + "_vs_" + compfilename[:-4] + ".geojson"
     gdf.to_file(outpath, driver='GeoJSON')         
     
     total_time = time.time() - origin_time
